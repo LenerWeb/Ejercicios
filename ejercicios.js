@@ -241,7 +241,7 @@ function ej13_calcularAprobados(nro_estu) {
 	if (isNaN(nro_estu)) {
 		return "Porfavor ingrese valores";
 	}else {
-		let numero = 0
+		let numero = 0;
 		while (numero < nro_estu) {
 			numero = numero + 1
 			let nota1 = parseFloat(prompt("Ingrese nota de alumno:"));
@@ -252,45 +252,32 @@ function ej13_calcularAprobados(nro_estu) {
 			}
 		}
 	}
-	return `"estudiantes aprobados : ${estu_aprob}, desaprobados : ${estu_desa}`
+	return `estudiantes aprobados : ${estu_aprob}, desaprobados : ${estu_desa}`
 }
 
 	
 function ej14_calcularInventario(num_focos) { // falta
+	let rojo = 0;
+	let blanco = 0;
+	let verde = 0;
 	if (isNaN(num_focos)) {
 		return "Porfavor ingrese valores";
 	} else { 
-		let focos = prompt("Ingrese el color del foco: \r\n rojo \r\n blanco \r\n verde");
-		switch (focos) {
-			case "rojo":
-				let rojo = parseFloat(prompt("Ingrese la cantidad de focos rojos"));
-				//let restante = num_focos - rojo
-			break;
-			
-			case "blanco":
-				let blanco = parseFloat(prompt("Ingrese la cantidad de focos blancos"));
-				//let restante = num_focos - rojo
-			break;
-
-			default:
-				let verde = num_focos-rojo-blanco
-				console.log("elegiste rojo");
-			break;
-		}
-
-		/* function inventarioRojo(rojo) {
-			if (isNaN(rojo)) {
-				return "Porfavor ingrese valores";
-			} else {
-			
+		let focos = 0;
+		while (focos < num_focos) {
+			focos = focos + 1;
+			let menu_focos = prompt("Ingrese la letra del color del foco: \r\n R : rojo \r\n blanco \r\n verde");
+			if (menu_focos == "r") {
+				rojo = rojo + 1;
+			} else if (menu_focos == "b") {
+				blanco = blanco + 1;
+			}else{
+				verde = verde + 1;
 			}
-		} */
-		/* let ex1 = parseFloat(prompt("Ingrese la primera nota:"));
-					let ex2 = parseFloat(prompt("Ingrese la segunda nota:"));
-					let ex3 = parseFloat(prompt("Ingrese la tercera nota:")); */
-		//return `El promedio de notas es: ${(ex1 + ex2 + ex3 + ex4) / 4}`;
 		}
+		return `Total ${num_focos}, Focos Rojos: ${rojo}, Blanco: ${blanco}, Verde ${verde}`
 	}
+}
 
 function ej15_calcularEdadVotacion(year_nac, year_vot) {
 	const edad_min = 18;
