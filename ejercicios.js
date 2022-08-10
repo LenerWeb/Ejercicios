@@ -100,24 +100,24 @@ function MenuEjercicios(nro_ejercicio) {
 			alert(ej12_calcularAumentoSalario(sal_ini));
 		break;
 
-		case 13: //falta mas
-			
+		case 13:
 			let nro_estu = parseFloat(prompt("Ingrese cantidad de alumnos:"));
-			
 			alert(ej13_calcularAprobados(nro_estu));
 		break;
 
-		case 14:
+		case 14: //falta mas
 			
-		/* let nro_estu = parseFloat(prompt("Ingrese cantidad de alumnos:"));
-		
-		alert(ej13_calcularAprobados(nro_estu)); */
+			let num_focos = parseFloat(prompt("Ingrese la cantidad de focos:"));
+			alert(ej14_calcularInventario(num_focos));
+			
 		break;
 
 		case 15:
-		let edad_vot = parseFloat(prompt("Ingrese edad de la persona:"));
-		
-		alert(ej15_calcularEdadVotacion(edad_vot));
+			const date_nac = new Date(prompt("Ingrese la fecha de su nacimiento: Mes-Dia-Año"));
+			const date_vot = new Date(prompt("Ingrese la fecha de las elecciones: Mes-Dia-Año"));
+			let year_nac = date_nac.getFullYear();
+			let year_vot = date_vot.getFullYear();
+			alert(ej15_calcularEdadVotacion(year_nac, year_vot));
 		break;
 
 	}
@@ -215,21 +215,18 @@ function ej11_calcularBonoTrabajo(year_work) {
 		return "Porfavor ingrese valores";
 	} else if (year_work > 0 && year_work < 6) {
 		return `El bono que te corresponde por ${year_work} años es: $ ${year_work * bono1}`;
-	}{
-		return `El bono que te corresponde por ${year_work} años es: $ ${bono2}`;
-		}
+	}
+	return `El bono que te corresponde por ${year_work} años es: $ ${bono2}`;
 }
 
-function ej12_calcularAumentoSalario(sal_ini) {
+function ej12_calcularAumentoSalario(sal_ini) { //return final no se puede jalar cada año
 	const aumento = 0.1;
 	let sal_new = sal_ini
-	
 	if (isNaN(sal_ini)) {
 		return "Porfavor ingrese valores";
 	} else {
 		for (let index = 1; index < 6; index++) {
 			sal_new = aumento*sal_new + sal_new;
-			
 			console.log(index)
 			console.log("sal_new",sal_new)
 		}
@@ -237,30 +234,75 @@ function ej12_calcularAumentoSalario(sal_ini) {
 	}
 }
 
-function ej13_calcularAprobados(nro_estu) { // falta
-	let nom = prompt("Ingrese nombre de alumno:");
-	let nota1 = parseFloat(prompt("Ingrese nota de alumno:"));
-	let alumno = [nom,nota1];
-	nro_estu = alumno.length
-
-	if (isNaN(nota1) || isNaN(nro_estu)) {
+function ej13_calcularAprobados(nro_estu) {
+	let estu_aprob = 0;
+	let estu_desa = 0;
+	
+	if (isNaN(nro_estu)) {
 		return "Porfavor ingrese valores";
-	} else if (nro_estu > 1)
-	{ 	nom = prompt("Ingrese nombre de alumno:");
-		nota1 = parseFloat(prompt("Ingrese nota de alumno:"));
-		alumno = [nom, nota1];
-		console.log(alumno.length)
+	}else {
+		let numero = 0
+		while (numero < nro_estu) {
+			numero = numero + 1
+			let nota1 = parseFloat(prompt("Ingrese nota de alumno:"));
+			if (nota1 > 10.5 && nota1 <= 20) {
+				estu_aprob = estu_aprob + 1;
+			} else {
+				estu_desa = estu_desa + 1;
+			}
+		}
 	}
+	return `"estudiantes aprobados : ${estu_aprob}, desaprobados : ${estu_desa}`
 }
 
-function ej15_calcularEdadVotacion(edad_vot) {
-	const edad_min = 18;
 	
-	if (isNaN(edad_vot) || isNaN(edad_min)) {
+function ej14_calcularInventario(num_focos) { // falta
+	if (isNaN(num_focos)) {
 		return "Porfavor ingrese valores";
-	} else if (edad_vot > edad_min) {
+	} else { 
+		let focos = prompt("Ingrese el color del foco: \r\n rojo \r\n blanco \r\n verde");
+		switch (focos) {
+			case "rojo":
+				let rojo = parseFloat(prompt("Ingrese la cantidad de focos rojos"));
+				//let restante = num_focos - rojo
+			break;
+			
+			case "blanco":
+				let blanco = parseFloat(prompt("Ingrese la cantidad de focos blancos"));
+				//let restante = num_focos - rojo
+			break;
+
+			default:
+				let verde = num_focos-rojo-blanco
+				console.log("elegiste rojo");
+			break;
+		}
+
+		/* function inventarioRojo(rojo) {
+			if (isNaN(rojo)) {
+				return "Porfavor ingrese valores";
+			} else {
+			
+			}
+		} */
+		/* let ex1 = parseFloat(prompt("Ingrese la primera nota:"));
+					let ex2 = parseFloat(prompt("Ingrese la segunda nota:"));
+					let ex3 = parseFloat(prompt("Ingrese la tercera nota:")); */
+		//return `El promedio de notas es: ${(ex1 + ex2 + ex3 + ex4) / 4}`;
+		}
+	}
+
+function ej15_calcularEdadVotacion(year_nac, year_vot) {
+	const edad_min = 18;
+	const edad_max = 70;
+	
+	if (isNaN(year_nac) || isNaN(year_vot)) {
+		return "Porfavor ingrese valores";
+	} else if (((year_vot-year_nac) >= edad_min) && ((year_vot-year_nac) <= edad_max)) {
 		return "¡¡Felicidades!! puedes votar en las elecciones proximas";
-	}else{
-		return `Aun te faltan ${edad_min - edad_vot} años para que puedas votar`;
+	}else if ((year_vot-year_nac) >= edad_max) {
+		return "Puedes votar en las elecciones pero es OPCIONAL"
+	}{
+		return `Aun te faltan ${edad_min - (year_vot - year_nac)} años para que puedas votar`;
 	}
 }
