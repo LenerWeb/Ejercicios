@@ -85,15 +85,41 @@ function MenuEjercicios(nro_ejercicio) {
 					edad: parseInt(prompt("Ingresa edad de tercera persona"))
 				},
 			];
+			//console.log(menor.name1,menor.edad) segun videos
 			// console.log(menor[0],menor[1],menor[2])
 			alert(ej10_calcularMenorEdad(menor[0].name1,menor[0].edad));
 			break; */
 
 		case 11:
-			
 			let year_work = parseFloat(prompt("Ingrese los años de trabajo:"));
 			alert(ej11_calcularBonoTrabajo(year_work));
 		break;
+
+		case 12:
+			let sal_ini = parseFloat(prompt("Ingrese el sueldo Inicial:"));
+			alert(ej12_calcularAumentoSalario(sal_ini));
+		break;
+
+		case 13: //falta mas
+			
+			let nro_estu = parseFloat(prompt("Ingrese cantidad de alumnos:"));
+			
+			alert(ej13_calcularAprobados(nro_estu));
+		break;
+
+		case 14:
+			
+		/* let nro_estu = parseFloat(prompt("Ingrese cantidad de alumnos:"));
+		
+		alert(ej13_calcularAprobados(nro_estu)); */
+		break;
+
+		case 15:
+		let edad_vot = parseFloat(prompt("Ingrese edad de la persona:"));
+		
+		alert(ej15_calcularEdadVotacion(edad_vot));
+		break;
+
 	}
 }
 
@@ -194,3 +220,47 @@ function ej11_calcularBonoTrabajo(year_work) {
 		}
 }
 
+function ej12_calcularAumentoSalario(sal_ini) {
+	const aumento = 0.1;
+	let sal_new = sal_ini
+	
+	if (isNaN(sal_ini)) {
+		return "Porfavor ingrese valores";
+	} else {
+		for (let index = 1; index < 6; index++) {
+			sal_new = aumento*sal_new + sal_new;
+			
+			console.log(index)
+			console.log("sal_new",sal_new)
+		}
+		return `el sueldo que recibira en los 6 años sera:\r\n 1. año ${(sal_ini)} \r\n 2. año ${sal_new} \r\n 3. año \r\n 4. año \r\n 5. año \r\n 6. año ${sal_new}`;
+	}
+}
+
+function ej13_calcularAprobados(nro_estu) { // falta
+	let nom = prompt("Ingrese nombre de alumno:");
+	let nota1 = parseFloat(prompt("Ingrese nota de alumno:"));
+	let alumno = [nom,nota1];
+	nro_estu = alumno.length
+
+	if (isNaN(nota1) || isNaN(nro_estu)) {
+		return "Porfavor ingrese valores";
+	} else if (nro_estu > 1)
+	{ 	nom = prompt("Ingrese nombre de alumno:");
+		nota1 = parseFloat(prompt("Ingrese nota de alumno:"));
+		alumno = [nom, nota1];
+		console.log(alumno.length)
+	}
+}
+
+function ej15_calcularEdadVotacion(edad_vot) {
+	const edad_min = 18;
+	
+	if (isNaN(edad_vot) || isNaN(edad_min)) {
+		return "Porfavor ingrese valores";
+	} else if (edad_vot > edad_min) {
+		return "¡¡Felicidades!! puedes votar en las elecciones proximas";
+	}else{
+		return `Aun te faltan ${edad_min - edad_vot} años para que puedas votar`;
+	}
+}
