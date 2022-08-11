@@ -1,7 +1,7 @@
 
 function CallMenu() {
 	let nro_ejercicio = parseInt(
-		prompt("Ingrese el numero de ejercicio que quiera ejecuttar: \r\n 1. Suma. \r\n 2. Promedio de Exmenes \r\n 3. Calcular el área del rectangulo \r\n 4. Calcular el área del triangulo \r\n 5. Calcular el área del circulo \r\n 6. Calcular salario semanal \r\n 7. Convertir pulgadas \r\n 8. Cambiar a dolares \r\n 9. Calcular edad personal \r\n 10. Persona de menor edad \r\n 11. Bono por antiguedad \r\n 12. Aumento Salario Anual \r\n 13. Alumnos aprobados y desaprobados \r\n 14. Inventario de focos de colores \r\n 15. Electores para elecciones")
+		prompt("Ingrese el numero de ejercicio que quiera ejecuttar: \r\n 1. Suma. \r\n 2. Promedio de Examenes \r\n 3. Calcular el área del rectangulo \r\n 4. Calcular el área del triangulo \r\n 5. Calcular el área del circulo \r\n 6. Calcular salario semanal \r\n 7. Convertir metros a pulgadas \r\n 8. Cambiar a dólares \r\n 9. Calcular edad personal \r\n 10. Persona de menor edad \r\n 11. Bono por antiguedad \r\n 12. Aumento del salario Anual \r\n 13. Alumnos aprobados y desaprobados \r\n 14. Inventario de focos de colores \r\n 15. Electores para elecciones")
 	);
 	if (isNaN(nro_ejercicio)) {
 		alert("Porfavor ingresa valores numericos");
@@ -193,15 +193,10 @@ function ej9_calcularEdadPostulante(year_now, anio_nac) {
 function ej10_calcularMenorEdad(menor){
     if (isNaN(menor[0].edad) || isNaN(menor[1].edad) || isNaN(menor[2].edad)) {
         return "Porfavor ingrese valores"
-        
     } else if ((menor[0].edad < menor[1].edad) && (menor[0].edad < menor[2].edad)){
-
         return `${menor[0].name1} de ${menor[0].edad} años, es el menor que : ${menor[1].name1} y ${menor[2].name1}`;
-
     } else if ((menor[1].edad < menor[0].edad) && (menor[1].edad < menor[2].edad)){
-
         return `${menor[1].name1} de ${menor[1].edad} años, es el menor que : ${menor[0].name1} y ${menor[2].name1}`;
-        
     }else {
         return `${menor[2].name1} de ${menor[2].edad} años, es el menor que : ${menor[0].name1} y ${menor[1].name1}`;
     } 

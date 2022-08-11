@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Fredoka+One&family=Patrick+Hand&family=Special+Elite&display=swap');
 
 .body{
-    
-    background-color:#7fff00 ;
+    position: relative;
+    background-color:rgb(21, 47, 95) ;
     background-image: url(./01.webp);
+    height: 100vh;
     margin: 0;
     padding: 0;
 }
@@ -54,10 +55,28 @@
     cursor: pointer;
 }
 
+.footer{
+    position: absolute;
+    display:flex;
+    bottom: 0;
+    left: 10px;
+}
+
+.footer_content{
+font-family: 'Special Elite', cursive;
+color: #faf4f4 ;
+margin-bottom: 12px;
+font-weight:normal;
+}
+
 @media (max-width:500px){
     .conteiner_titulo{
         font-size: 3rem;
         
 }
 
+.footer_content{
+    font-size: 0.8em;
+    }
 
+}
